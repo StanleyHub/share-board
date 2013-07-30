@@ -18,7 +18,7 @@ namespace Migration
             var msSqlConfiguration = MsSqlConfiguration.MsSql2008.ConnectionString(sqlConnectionString).Raw("connection.release_mode", "on_close");
             Configuration configuration = null;
             var sessionFactory = Fluently.Configure().Database(msSqlConfiguration).Mappings(
-                config => config.FluentMappings.AddFromAssembly(typeof(Project).Assembly))
+                config => config.FluentMappings.AddFromAssembly(typeof(Post).Assembly))
                                          .ExposeConfiguration(c =>
                                          {
                                              configuration = c;
