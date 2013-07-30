@@ -14,7 +14,7 @@ namespace Migration
     {
         static void Main(string[] args)
         {
-            const string sqlConnectionString = "Data Source=localhost;Initial Catalog=project;Integrated Security=True;Enlist=false;";
+            const string sqlConnectionString = "Data Source=localhost;Initial Catalog=share-board;Integrated Security=True;Enlist=false;";
             var msSqlConfiguration = MsSqlConfiguration.MsSql2008.ConnectionString(sqlConnectionString).Raw("connection.release_mode", "on_close");
             Configuration configuration = null;
             var sessionFactory = Fluently.Configure().Database(msSqlConfiguration).Mappings(
