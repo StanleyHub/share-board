@@ -4,15 +4,23 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json;
+using ShareBoard.Models;
 
 namespace ShareBoard.Controllers
 {
-    public class ValuesController : ApiController
+    public class PostController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Post> Get()
         {
-            return new string[] { "value1", "value2" };
+            Post post = new Post()
+                {
+                    Title = "title",
+                    Text = "test",
+                    Time = DateTime.Now
+                };
+            return new Post[] {post, post};
         }
 
         // GET api/values/5

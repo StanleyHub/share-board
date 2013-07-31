@@ -10,24 +10,26 @@
 </div>
 <div id="body" ng-controller="ShareBoardCtrl">
     <section class="featured">
-        <div class="whitebox" style="max-width: 800px;margin: 0px auto">
-            <hgroup class="title">
-                <h2 class="share-title">I want to hear a session about...</h2>
-            </hgroup>
-            <textarea class="form-control" rows="3"></textarea>
-            <div class="clearfix">
-                <button type="button" class="btn btn-success share-button pull-right">Post</button>
-                <div class="btn-group pull-right share-type">
-                    <button type="button" class="btn btn-success">Hear</button>
-                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Hear</a></li>
-                        <li><a href="#">Share</a></li>
-                        <li><a href="#">Introduce</a></li>
-                    </ul>
+        <form ng-submit="save()">
+            <div class="whitebox" style="max-width: 800px;margin: 0px auto">
+                <hgroup class="title">
+                    <h2 class="share-title">I want to hear a session about...</h2>
+                </hgroup>
+                <textarea class="form-control" rows="3" ng-model="postItem.content"></textarea>
+                <div class="clearfix">
+                    <button type="submit" class="btn btn-danger share-button pull-right">Post</button>
+                    <div class="btn-group pull-right share-type">
+                        <button type="button" class="btn btn-success" ng-model="postItem.type">{{postItem.type}}</button>
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="type in types"><a ng-click="postTypeSelect(type)">{{type}}</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div>    
+        </form>
     </section>
     <section class="featured" style="margin-top: 30px;">
         <div class="bs-example" style="max-width: 800px; margin: 0px auto">
