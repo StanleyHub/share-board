@@ -1,5 +1,7 @@
 ﻿body {
     background: url(/content/img/wood.jpg) #efefef;
+    font-family: 'Leckerli One', cursive;
+    color: #404040;
 }
 
 .bs-docs-nav {
@@ -9,6 +11,12 @@
 
 #header {
     height: 80px;
+}
+
+#btn-home {
+    font-size: 25px; 
+    color: white; 
+    font-weight: bold
 }
 
 .share-button {
@@ -24,6 +32,11 @@
     line-height: 36px;
     font-family: 'Leckerli One', cursive;
     text-shadow: #dbdbdb 0px 0px 0px;
+    color: #404040;
+}
+
+.panel-title-font {
+    font-family: 'Leckerli One', cursive;
     color: #404040;
 }
 
