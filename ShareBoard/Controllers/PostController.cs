@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
+using ShareBoard.Entities;
 using ShareBoard.Models;
 
 namespace ShareBoard.Controllers
@@ -12,36 +13,34 @@ namespace ShareBoard.Controllers
     public class PostController : ApiController
     {
         // GET api/values
-        public IEnumerable<Post> Get()
+        public IEnumerable<PostItem> Get()
         {
-            Post post = new Post()
+            PostItem postItem1 = new PostItem()
                 {
-                    Title = "title",
-                    Text = "test",
+                    Content = "C#",
+                    Type = PostItemType.Hear,
                     Time = DateTime.Now
                 };
-            return new Post[] {post, post};
-        }
-
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
+            PostItem postItem2 = new PostItem()
+            {
+                Content = "AngularJS",
+                Type = PostItemType.Share,
+                Time = DateTime.Now
+            };
+            return new PostItem[] {postItem1, postItem2};
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public void Post(PostRequest request)
         {
-        }
+            PostItem postItem = new PostItem()
+                {
+                    Content = request.Content,
+                    Type = request.Type
+                };
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+            //TODO save into the database
 
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
         }
     }
 }

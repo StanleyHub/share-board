@@ -1,12 +1,14 @@
-﻿'use strict'
-
-function ShareBoardCtrl($scope, $http, $log) {
+﻿function ShareBoardCtrl($scope, $http, $log) {
     $scope.postItem = {};
     $scope.postItem.type = 'Hear';
     $scope.types = ['Hear', 'Share', 'Introduce'];
 
     $scope.save = function () {
         $log.log('saving person');
+        $http.post('/api/post', $scope.postItem).success(function (data) {
+            var item = { Content: $scope.postItem.content, Type: 0 };
+            $scope.postItems.push(angular.copy(item));
+        });
     };
 
     $scope.postTypeSelect = function (type) {
@@ -22,6 +24,6 @@ function ShareBoardCtrl($scope, $http, $log) {
     };
 
     $http.get('/api/post').success(function (data) {
-        $scope.phones = data;
+        $scope.postItems = data;
     });
 }

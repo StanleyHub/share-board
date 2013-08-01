@@ -21,7 +21,7 @@ namespace ShareBoard.Tests.Controllers
             PostController controller = new PostController();
 
             // Act
-            IEnumerable<Post> result = controller.Get();
+            IEnumerable<PostItem> result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
@@ -31,50 +31,13 @@ namespace ShareBoard.Tests.Controllers
         }
 
         [TestMethod]
-        public void GetById()
-        {
-            // Arrange
-            PostController controller = new PostController();
-
-            // Act
-            string result = controller.Get(5);
-
-            // Assert
-            Assert.AreEqual("value", result);
-        }
-
-        [TestMethod]
         public void Post()
         {
             // Arrange
             PostController controller = new PostController();
 
             // Act
-            controller.Post("value");
-
-            // Assert
-        }
-
-        [TestMethod]
-        public void Put()
-        {
-            // Arrange
-            PostController controller = new PostController();
-
-            // Act
-            controller.Put(5, "value");
-
-            // Assert
-        }
-
-        [TestMethod]
-        public void Delete()
-        {
-            // Arrange
-            PostController controller = new PostController();
-
-            // Act
-            controller.Delete(5);
+//            controller.Post("value");
 
             // Assert
         }

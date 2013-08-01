@@ -33,25 +33,28 @@
     </section>
     <section class="featured" style="margin-top: 30px;">
         <div class="bs-example" style="max-width: 800px; margin: 0px auto">
-      
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h3 class="panel-title panel-title-font">I want to hear a session about...</h3>
+            <div ng-repeat="postItem in postItems">
+                <ng-switch on="postItem.Type">
+                    <div ng-switch-when="0" class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title panel-title-font">I want to hear a session about...</h3>
+                        </div>
+                        {{postItem.Content}}                
+                    </div>
+                    <div ng-switch-when="1" class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title panel-title-font">I want to share something about...</h3>
+                        </div>
+                        {{postItem.Content}}                
+                    </div>
+                    <div ng-switch-when="2" class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title panel-title-font">I am...</h3>
+                        </div>
+                        {{postItem.Content}}                
+                    </div>    
+                </ng-switch>                
+            </div>
         </div>
-        Panel content
-      </div>
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h3 class="panel-title panel-title-font">I want to share something about...</h3>
-        </div>
-        Panel content
-      </div>
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title panel-title-font">I am ...</h3>
-        </div>
-        Panel content
-      </div>
-    </div>
     </section>
 </div>
