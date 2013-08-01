@@ -143,8 +143,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PostItem.cs" />
+    <Compile Include="Mapping\PostMap.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DbSessionFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\img\redbg.png" />
