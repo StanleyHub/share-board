@@ -3,13 +3,13 @@ using ShareBoard.Models;
 
 namespace ShareBoard.Mapping
 {
-    public class PostMap : ClassMap<Post>
+    public class PostItemMap : ClassMap<PostItem>
     {
-        public PostMap()
+        public PostItemMap()
         {
             Id(o => o.Id).GeneratedBy.Assigned();
-            Map(o => o.Title);
-            Map(o => o.Text);
+            Map(o => o.Content);
+            Map(o => o.Type);
             Map(o => o.Time);
         }
     }

@@ -143,7 +143,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mapping\PostMap.cs" />
+    <Compile Include="Mapping\PostItemMap.cs" />
     <Compile Include="Models\PostItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbSessionFactory.cs" />
