@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using Newtonsoft.Json;
+using NHibernate;
 using ShareBoard.Entities;
 using ShareBoard.Models;
 
@@ -12,6 +9,8 @@ namespace ShareBoard.Controllers
 {
     public class PostController : ApiController
     {
+        static readonly ISessionFactory SessionFactory = DbSessionFactory.GetCurrentFactory();
+
         // GET api/values
         public IEnumerable<PostItem> Get()
         {
@@ -34,13 +33,21 @@ namespace ShareBoard.Controllers
         public void Post(PostRequest request)
         {
             PostItem postItem = new PostItem()
-                {
-                    Content = request.Content,
-                    Type = request.Type
-                };
+            {
+                Content = request.Content,
+                Type = request.Type,
+                Time = DateTime.Now
+            };
 
             //TODO save into the database
-
+            using (var session = SessionFactory.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.SaveOrUpdate(postItem);
+                    transaction.Commit();
+                }
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace ShareBoard.Models
 {
     public class PostItem
     {
-        public virtual Guid Id { get; set; }
+        public virtual int Id { get; set; }
         public virtual string Content { get; set; }
         public virtual PostItemType Type { get; set; }
         public virtual DateTime Time { get; set; }

@@ -5,7 +5,7 @@ namespace Migration
 {
     public class PostItem
     {
-        public virtual Guid Id { get; set; }
+        public virtual int Id { get; set; }
         public virtual string Content { get; set; }
         public virtual PostItemType Type { get; set; }
         public virtual DateTime Time { get; set; }
@@ -22,7 +22,7 @@ namespace Migration
     {
         public PostItemMap()
         {
-            Id(o => o.Id).GeneratedBy.Assigned();
+            Id(o => o.Id).GeneratedBy.Increment();
             Map(o => o.Content);
             Map(o => o.Type);
             Map(o => o.Time);

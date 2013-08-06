@@ -7,7 +7,7 @@ namespace ShareBoard.Mapping
     {
         public PostItemMap()
         {
-            Id(o => o.Id).GeneratedBy.Assigned();
+            Id(o => o.Id).GeneratedBy.Increment();
             Map(o => o.Content);
             Map(o => o.Type);
             Map(o => o.Time);
