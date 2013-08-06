@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using NHibernate;
 using ShareBoard.Entities;
@@ -10,43 +11,30 @@ namespace ShareBoard.Controllers
     public class PostController : ApiController
     {
         static readonly ISessionFactory SessionFactory = DbSessionFactory.GetCurrentFactory();
+        readonly ISession _session = SessionFactory.OpenSession();
 
         // GET api/values
         public IEnumerable<PostItem> Get()
         {
-            PostItem postItem1 = new PostItem()
-                {
-                    Content = "C#",
-                    Type = PostItemType.Hear,
-                    Time = DateTime.Now
-                };
-            PostItem postItem2 = new PostItem()
-            {
-                Content = "AngularJS",
-                Type = PostItemType.Share,
-                Time = DateTime.Now
-            };
-            return new PostItem[] {postItem1, postItem2};
+            IQuery query = _session.CreateQuery("from PostItem");
+            PostItem[] postItems = query.List<PostItem>().ToArray();
+            return postItems;
         }
 
         // POST api/values
         public void Post(PostRequest request)
         {
-            PostItem postItem = new PostItem()
+            var postItem = new PostItem
             {
                 Content = request.Content,
                 Type = request.Type,
                 Time = DateTime.Now
             };
 
-            //TODO save into the database
-            using (var session = SessionFactory.OpenSession())
+            using (var transaction = _session.BeginTransaction())
             {
-                using (var transaction = session.BeginTransaction())
-                {
-                    session.SaveOrUpdate(postItem);
-                    transaction.Commit();
-                }
+                _session.SaveOrUpdate(postItem);
+                transaction.Commit();
             }
         }
     }
