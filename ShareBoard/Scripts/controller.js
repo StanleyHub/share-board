@@ -6,7 +6,13 @@
     $scope.save = function () {
         $log.log('saving person');
         $http.post('/api/post', $scope.postItem).success(function (data) {
-            var item = { Content: $scope.postItem.content, Type: 0 };
+            var postType = 0;
+            for (var i = 0; i < types.length; i++) {
+                if (types[i] == $scope.postItem.type) {
+                    postType = i;
+                }
+            }
+            var item = { Content: $scope.postItem.content, Type: postType };
             $scope.postItems.push(angular.copy(item));
         });
     };
