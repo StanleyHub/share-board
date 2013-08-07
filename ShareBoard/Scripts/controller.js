@@ -1,10 +1,9 @@
-﻿function ShareBoardCtrl($scope, $http, $log) {
+﻿function ShareBoardCtrl($scope, $http, $rootScope, uploadManager) {
     $scope.postItem = {};
     $scope.postItem.type = 'Hear';
     $scope.types = ['Hear', 'Share', 'Introduce'];
 
     $scope.save = function () {
-        $log.log('saving person');
         $http.post('/api/post', $scope.postItem).success(function () {
             var postType = 0;
             for (var i = 0; i < $scope.types.length; i++) {
@@ -26,17 +25,15 @@
         } else {
             $('.share-title').text("I am...");
         }
-        $log.log('test');
     };
 
     $http.get('/api/post').success(function (data) {
         $scope.postItems = data;
     });
-}
 
-function FileUploadCtrl($scope, $rootScope, uploadManager) {
     $scope.files = [];
     $scope.percentage = 0;
+    $scope.imagePath = '';
 
     $scope.upload = function () {
         uploadManager.upload();
@@ -51,7 +48,38 @@ function FileUploadCtrl($scope, $rootScope, uploadManager) {
     $rootScope.$on('uploadProgress', function (e, call) {
         $scope.percentage = call;
         $scope.$apply();
-    });    
+    });
+
+    $rootScope.$on('displayImg', function (e, call) {
+        $scope.imagePath = "/uploads/" + call;
+        $scope.$apply();
+    });
+}
+
+function FileUploadCtrl($scope, $rootScope, uploadManager) {
+    $scope.files = [];
+    $scope.percentage = 0;
+    $scope.imagePath = '';
+
+    $scope.upload = function () {
+        uploadManager.upload();
+        $scope.files = [];
+    };
+
+    $rootScope.$on('fileAdded', function (e, call) {
+        $scope.files.push(call);
+        $scope.$apply();
+    });
+
+    $rootScope.$on('uploadProgress', function (e, call) {
+        $scope.percentage = call;
+        $scope.$apply();
+    });
+
+    $rootScope.$on('displayImg', function (e, call) {
+        $scope.imagePath = "/uploads/" + call;
+        $scope.$apply();
+    });
 }
 
 

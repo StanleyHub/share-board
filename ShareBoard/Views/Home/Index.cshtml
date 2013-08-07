@@ -27,6 +27,22 @@
                             <li ng-repeat="type in types"><a ng-click="postTypeSelect(type)">{{type}}</a></li>
                         </ul>
                     </div>
+                    <div ng-show="postItem.type=='Introduce'">
+                        <div class="upload-btn">
+                            <button type="button" class="btn btn-primary pull-left" ng-click="upload()">Upload</button>
+                        </div>
+                        <div class="controls add-btn">
+                            <span class="btn btn-warning fileinput-button">
+                                <span>Add files...</span>
+                                <input type="file" name="file" data-url="home/upload" multiple upload>
+                            </span>
+                        </div>
+                        <div class="file-name">
+                            <span ng-show="!files.length">No files selected</span>
+                            <span>{{files[0]}}</span>
+                        </div>
+                        <img class="upload-img" src="{{imagePath}}"/>
+                    </div>
                 </div>
             </div>    
         </form>
@@ -39,7 +55,9 @@
                         <div class="panel-heading">
                             <h3 class="panel-title panel-title-font">I want to hear a session about...</h3>
                         </div>
-                        {{postItem.Content}}                
+                        <div>
+                            <span>{{postItem.Content}}</span>    
+                        </div>
                     </div>
                     <div ng-switch-when="1" class="panel panel-warning">
                         <div class="panel-heading">
@@ -51,31 +69,10 @@
                         <div class="panel-heading">
                             <h3 class="panel-title panel-title-font">I am...</h3>
                         </div>
-                        {{postItem.Content}}                
+                        
                     </div>    
                 </ng-switch>                
             </div>
         </div>
     </section>
-</div>
-
-<div ng-controller="FileUploadCtrl">
-    <div class="control-group">
-        <div class="controls">
-            <span class="btn btn-success fileinput-button">
-                <i class="icon-plus icon-white"></i>
-                <input type="file" name="file" data-url="home/upload" 
-                       multiple upload><span>Add files...</span>
-            </span>
-        </div>
-        <div>
-            <span ng-show="!files.length">No files selected</span>
-            <ul>
-                <li ng-repeat="file in files">{{file}}</li>
-            </ul>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary pull-left" ng-click="upload()">Upload</button>
-            </div>
-        </div>
-    </div>
 </div>

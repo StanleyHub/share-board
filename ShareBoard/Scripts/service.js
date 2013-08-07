@@ -27,6 +27,9 @@ angular.module('shareBoardApp.services', []).
             },
             setProgress: function (percentage) {
                 $rootScope.$broadcast('uploadProgress', percentage);
+            },
+            setUploadedFile: function (fileName) {
+                $rootScope.$broadcast('displayImg', fileName);
             }
         };
     });

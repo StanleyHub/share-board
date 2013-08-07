@@ -1,7 +1,7 @@
 ﻿'user strict';
 
 angular.module('shareBoardApp.directives', ['shareBoardApp.services'])
-    .directive('upload', ['uploadManager', function(uploadManager) {
+    .directive('upload', ['uploadManager', function (uploadManager) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
@@ -16,6 +16,7 @@ angular.module('shareBoardApp.directives', ['shareBoardApp.services'])
                     },
                     done: function (e, data) {
                         uploadManager.setProgress(0);
+                        uploadManager.setUploadedFile(data.files[0].name);
                     }
                 });
             }
