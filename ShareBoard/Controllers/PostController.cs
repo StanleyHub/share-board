@@ -10,14 +10,12 @@ namespace ShareBoard.Controllers
 {
     public class PostController : ApiController
     {
-        static readonly ISessionFactory SessionFactory = DbSessionFactory.GetCurrentFactory();
-        readonly ISession _session = SessionFactory.OpenSession();
+        readonly ISession _session = DbSessionFactory.GetCurrentFactory().OpenSession();
 
         // GET api/values
         public IEnumerable<PostItem> Get()
         {
-            IQuery query = _session.CreateQuery("from PostItem");
-            PostItem[] postItems = query.List<PostItem>().ToArray();
+            PostItem[] postItems = _session.CreateQuery("from PostItem").List<PostItem>().ToArray();
             return postItems;
         }
 

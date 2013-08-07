@@ -5,10 +5,10 @@
 
     $scope.save = function () {
         $log.log('saving person');
-        $http.post('/api/post', $scope.postItem).success(function (data) {
+        $http.post('/api/post', $scope.postItem).success(function () {
             var postType = 0;
-            for (var i = 0; i < types.length; i++) {
-                if (types[i] == $scope.postItem.type) {
+            for (var i = 0; i < $scope.types.length; i++) {
+                if ($scope.types[i] == $scope.postItem.type) {
                     postType = i;
                 }
             }
