@@ -1,8 +1,8 @@
-﻿'use strict'
+﻿'use strict';
 
-angular.module('shareBoard')
-    .config([$routeProvider, function ($routeProvider) {
+angular.module('shareBoardApp', ['shareBoardApp.services', 'shareBoardApp.directives'])
+    .config(['$routeProvider', function($routeProvider) {
         $routeProvider.
-            when('/api/values', {templateUrl: ''}).
+            when('/api/values', { templateUrl: '' }).
             otherwise({ redirectTo: '/' });
-    } ]);
+    }]);

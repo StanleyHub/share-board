@@ -1,18 +1,21 @@
 ﻿<!DOCTYPE html>
-<html ng-app>
+<html ng-app="shareBoardApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-@*    @Styles.Render("~/Content/themes/css")*@
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/angular/angular.js")
-    @Scripts.Render("~/Scripts/controller.js")
+    
 </head>
 <body>
     @RenderBody()
-
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/angular/angular.js")
+    @Scripts.Render("~/Scripts/app.js")
+    @Scripts.Render("~/Scripts/controller.js")
+    @Scripts.Render("~/Scripts/service.js")
+    @Scripts.Render("~/Scripts/directive.js")
 </body>
 </html>
