@@ -42,7 +42,7 @@
                             <span>{{files[0]}}</span>
                         </div>
                         <img class="upload-img" src="{{imagePath}}"/>
-                        <span ng-model="ImagePath">{{ImagePath}}</span>
+@*                        <span ng-model="imagePath">{{postItem.ImagePath}}</span>*@
                     </div>
                 </div>
             </div>    
@@ -70,7 +70,10 @@
                         <div class="panel-heading">
                             <h3 class="panel-title panel-title-font">I am...</h3>
                         </div>
-                        {{postItem.Content}}                
+                        <div>
+                            <img class="upload-img" src="{{postItem.ImagePath}}"/>
+                            <span>{{postItem.Content}}</span>    
+                        </div>
                     </div>    
                 </ng-switch>                
             </div>

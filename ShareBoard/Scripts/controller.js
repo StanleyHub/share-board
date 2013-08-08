@@ -14,10 +14,10 @@
                     postType = i;
                 }
             }
-            var item = { Content: $scope.postItem.content, Type: postType, ImagePath: $scope.ImagePath };
+            var item = { Content: $scope.postItem.content, Type: postType, ImagePath: $scope.postItem.ImagePath };
             $scope.postItems.push(angular.copy(item));
 
-            $scope.ImagePath = '';
+            $scope.imagePath = '';
         });
     };
 
@@ -43,7 +43,6 @@
 
     $rootScope.$on('fileAdded', function (e, call) {
         $scope.files.push(call);
-        $scope.imagePath = "/uploads/" + call;
         $scope.$apply();
     });
 
@@ -54,8 +53,7 @@
 
     $rootScope.$on('displayImg', function (e, call) {
         $scope.imagePath = "/uploads/" + call;
+        $scope.postItem.ImagePath = $scope.imagePath;
         $scope.$apply();
     });
 }
-
-
