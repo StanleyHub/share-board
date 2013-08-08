@@ -20,13 +20,13 @@
 }
 
 .share-button {
-    margin-top: 10px;
+    margin-top: 16px;
     width: 80px;
 }
 
 .add-btn, .upload-btn {
     float: right;
-    margin: 10px 10px 0 0; 
+    margin: 16px 10px 0 0; 
 }
 
 .add-btn input {
@@ -42,7 +42,7 @@
 
 .file-name {
     float: right;
-    margin: 18px 10px 0 0;
+    margin: 25px 10px 0 0;
 }
 
 .upload-img {
@@ -51,7 +51,7 @@
 }
 
 .share-type {
-    margin: 10px 10px 0px 0px;
+    margin: 16px 10px 0px 0px;
 }
 
 .share-title {
