@@ -8,6 +8,7 @@ namespace ShareBoard.Models
         public virtual string Content { get; set; }
         public virtual PostItemType Type { get; set; }
         public virtual DateTime Time { get; set; }
+        public virtual string ImagePath { get; set; }
     }
 
     public enum PostItemType

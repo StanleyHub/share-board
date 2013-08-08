@@ -6,5 +6,6 @@ namespace ShareBoard.Entities
     {
         public string Content { get; set; }
         public PostItemType Type { get; set; }
+        public string ImagePath { get; set; }
     }
 }

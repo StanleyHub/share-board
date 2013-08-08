@@ -26,7 +26,8 @@ namespace ShareBoard.Controllers
             {
                 Content = request.Content,
                 Type = request.Type,
-                Time = DateTime.Now
+                Time = DateTime.Now,
+                ImagePath = request.ImagePath
             };
 
             using (var transaction = _session.BeginTransaction())

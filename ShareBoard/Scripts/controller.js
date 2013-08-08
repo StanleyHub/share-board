@@ -2,6 +2,9 @@
     $scope.postItem = {};
     $scope.postItem.type = 'Hear';
     $scope.types = ['Hear', 'Share', 'Introduce'];
+    $scope.files = [];
+    $scope.percentage = 0;
+    $scope.imagePath = '';
 
     $scope.save = function () {
         $http.post('/api/post', $scope.postItem).success(function () {
@@ -11,8 +14,10 @@
                     postType = i;
                 }
             }
-            var item = { Content: $scope.postItem.content, Type: postType };
+            var item = { Content: $scope.postItem.content, Type: postType, ImagePath: $scope.ImagePath };
             $scope.postItems.push(angular.copy(item));
+
+            $scope.ImagePath = '';
         });
     };
 
@@ -31,10 +36,6 @@
         $scope.postItems = data;
     });
 
-    $scope.files = [];
-    $scope.percentage = 0;
-    $scope.imagePath = '';
-
     $scope.upload = function () {
         uploadManager.upload();
         $scope.files = [];
@@ -42,6 +43,7 @@
 
     $rootScope.$on('fileAdded', function (e, call) {
         $scope.files.push(call);
+        $scope.imagePath = "/uploads/" + call;
         $scope.$apply();
     });
 
@@ -55,32 +57,5 @@
         $scope.$apply();
     });
 }
-
-function FileUploadCtrl($scope, $rootScope, uploadManager) {
-    $scope.files = [];
-    $scope.percentage = 0;
-    $scope.imagePath = '';
-
-    $scope.upload = function () {
-        uploadManager.upload();
-        $scope.files = [];
-    };
-
-    $rootScope.$on('fileAdded', function (e, call) {
-        $scope.files.push(call);
-        $scope.$apply();
-    });
-
-    $rootScope.$on('uploadProgress', function (e, call) {
-        $scope.percentage = call;
-        $scope.$apply();
-    });
-
-    $rootScope.$on('displayImg', function (e, call) {
-        $scope.imagePath = "/uploads/" + call;
-        $scope.$apply();
-    });
-}
-
 
 

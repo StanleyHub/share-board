@@ -11,6 +11,7 @@ namespace ShareBoard.Mapping
             Map(o => o.Content);
             Map(o => o.Type);
             Map(o => o.Time);
+            Map(o => o.ImagePath);
         }
     }
 }
